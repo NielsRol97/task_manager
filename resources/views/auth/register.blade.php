@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="auth_wrapper">
+<div class="auth_wrapper" style="background-image: url('{{ asset('storage/images/auth_background.jpg') }}')">
     <form action="{{ route('auth.register') }}" method="POST" class="form_container">
         @csrf 
         <x-form-field 
@@ -40,7 +40,7 @@
             inputType="password" 
             inputValue="{{ old('password_confirmation') }}" 
             labelClass="form_label" 
-            labelValue="{{__('Wachtwoord bevestigen')}}"
+            labelValue="{{__('Wachtwoord bevestigen:')}}"
             inputClass="form_input"
         />
 

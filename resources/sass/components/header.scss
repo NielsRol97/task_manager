@@ -1,0 +1,42 @@
+@use '../partials/colors.scss' as colors;
+
+.header_wrapper {
+    display: flex;
+    width: 100%;
+    background: colors.$header-background-color;
+
+    .header_left {
+        flex: 2;
+
+        .nav_container {
+            width: 100%;
+            height: 100%;
+
+            .nav_block {
+                display: flex;
+                justify-content: flex-start;
+                gap: 2rem;
+
+                .nav_item {
+                    list-style: none;
+
+                    .nav_link {
+                        text-decoration: none;
+                        font-size: 1rem;
+                        color: colors.$header-text-color;
+                        letter-spacing: 1px;
+                        transition: .25s ease-in-out;
+
+                        &:hover {
+                            color: colors.$header-text-hover-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .header_right {
+        flex: 1;
+    }
+}

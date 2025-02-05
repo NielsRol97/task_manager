@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="auth_wrapper">
+<div class="auth_wrapper" style="background-image: url('{{ asset('storage/images/auth_background.jpg') }}')">
     <form action="{{ route('auth.login') }}" method="POST" class="form_container">
         @csrf
         

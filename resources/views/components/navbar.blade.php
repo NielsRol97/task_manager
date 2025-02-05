@@ -17,7 +17,9 @@
                 @auth
                     <!-- Alleen zichtbaar voor ingelogde gebruikers -->
                     <li class="nav_item">
-                        <span class="nav_user">{{ __('Welkom, ') . Auth::user()->name }}</span>
+                        <a href="{{ route('dashboard.index') }}" class="nav_link">
+                            {{Auth::user()->name}}
+                        </a>
                     </li>
                     <li class="nav_item">
                         <a 
