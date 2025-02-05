@@ -1,0 +1,60 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", serif;
+}
+
+.page_wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.auth_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.auth_wrapper .form_container {
+  display: inherit;
+  flex-direction: column;
+  gap: 1rem;
+}
+.auth_wrapper .form_container .form_field {
+  display: flex;
+  flex-direction: column;
+}
+
+.button_primary {
+  background-color: hsl(0, 0%, 20%);
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.button_primary:hover {
+  background-color: hsl(0, 0%, 25%);
+}
+.button_primary:active {
+  background-color: hsl(0, 0%, 15%);
+  transform: scale(0.98);
+}
+.button_primary:focus {
+  outline: 2px solid hsl(0, 0%, 25%);
+  outline-offset: 2px;
+}
+.button_primary:disabled {
+  background-color: hsl(0, 0%, 20%);
+  color: hsl(0, 0%, 100%);
+  cursor: not-allowed;
+}
+
+/*# sourceMappingURL=style.css.map */

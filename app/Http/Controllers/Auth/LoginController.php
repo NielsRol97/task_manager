@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
     /**
-     * Show the login form.
+     * Toon het inlogformulier.
      *
      * @return \Illuminate\View\View
      */
@@ -20,33 +20,49 @@ class LoginController extends Controller
     }
 
     /**
-     * Handle a login request to the application.
+     * Verwerk een inlogverzoek naar de applicatie.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function login(Request $request)
     {
+        // Valideer de invoer
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
+
+        // Haal de gegevens op
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
+        // Probeer in te loggen
+        if (Auth::attempt($credentials, $request->filled('remember'))) {
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('dashboard.index'))->with('success', __('Je bent succesvol ingelogd.'));
         }
 
+        // Foutmelding bij mislukte poging
         throw ValidationException::withMessages([
             'email' => [trans('auth.failed')],
         ]);
     }
 
     /**
-     * Log the user out of the application.
+     * Log de gebruiker uit de applicatie.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
 
-        return redirect('/');
+        // Ongeldig maken van de sessie
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect(route('view.login'))->with('success', __('Je bent succesvol uitgelogd.'));
     }
 }

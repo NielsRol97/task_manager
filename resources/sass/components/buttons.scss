@@ -1,0 +1,32 @@
+@use '../partials/colors.scss' as colors;
+
+.button_primary {
+  background-color: colors.$primary-button-background;
+  color: colors.$primary-button-text;
+  border: none;
+  border-radius: colors.$primary-button-border-radius;
+  padding: colors.$primary-button-padding;
+  font-size: colors.$primary-button-font-size;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+
+  &:hover {
+    background-color: colors.$primary-button-hover;
+  }
+
+  &:active {
+    background-color: colors.$primary-button-active;
+    transform: scale(0.98);
+  }
+
+  &:focus {
+    outline: 2px solid colors.$primary-button-hover;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    background-color: colors.$primary-button-background;
+    color: colors.$primary-button-text;
+    cursor: not-allowed;
+  }
+}
